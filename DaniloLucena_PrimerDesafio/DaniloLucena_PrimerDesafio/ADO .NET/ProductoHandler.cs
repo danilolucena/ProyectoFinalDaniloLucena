@@ -56,7 +56,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                     {
                         sqlCommand.Connection = sqlConnection;
                         sqlCommand.Connection.Open();
-                        sqlCommand.CommandText = "SELECT * FROM Producto WHERE Id = @Id";
+                        sqlCommand.CommandText = "SELECT * FROM Producto WHERE IdUsuario = @Id";
                         sqlCommand.Parameters.AddWithValue("@Id", id);
 
                         SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -69,7 +69,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                         {
                             Producto producto = new Producto();
                             producto.Id = Convert.ToInt32(row["Id"]);
-                            producto.Descripcion = row["Descripcion"].ToString();
+                            producto.Descripcion = row["Descripciones"].ToString();
                             producto.Costo = Convert.ToInt32(row["Costo"]);
                             producto.PrecioVenta = Convert.ToInt32(row["PrecioVenta"]);
                             producto.Stock = Convert.ToInt32(row["Stock"]);
@@ -86,6 +86,44 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                 Console.WriteLine(ex.Message);
             }
             return resultado?.FirstOrDefault();
+        }
+        public Producto GetProductoVendidoXUsuario(int id)
+        {
+            List<Producto> resultadoDescripciones = new List<Producto>();
+            try
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
+                {
+                    using (SqlCommand sqlCommand = new SqlCommand())
+                    {
+                        sqlCommand.Connection = sqlConnection;
+                        sqlCommand.Connection.Open();
+                        sqlCommand.CommandText = "SELECT DISTINCT p.Descripciones FROM Producto p INNER JOIN ProductoVendido pv ON p.Id = pv.IdProducto INNER JOIN Usuario u ON p.IdUsuario = u.Id  WHERE u.Id = @Id";
+                        sqlCommand.Parameters.AddWithValue("@Id", id);
+
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                        dataAdapter.SelectCommand = sqlCommand;
+                        DataTable table = new DataTable();
+                        dataAdapter.Fill(table); //Se ejecuta el Select
+                        sqlCommand.Connection.Close();
+
+                        foreach (DataRow row in table.Rows)
+                        {
+                            Producto producto1 = new Producto();
+                          
+                            producto1.Descripcion = row["Descripciones"].ToString();
+                            resultadoDescripciones.Add(producto1);
+
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return resultadoDescripciones?.FirstOrDefault();
         }
     }
 }

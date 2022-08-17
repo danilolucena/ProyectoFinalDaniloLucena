@@ -22,14 +22,16 @@ public class Probar
         ProductoHandler productoHandler = new ProductoHandler();
 
         Producto pro = new Producto();
-        pro.Id = 3;
+        pro.Id = 1;
         pro.Descripcion = "Bermuda";
         pro.Costo = 600;
         pro.PrecioVenta = 3000;
         pro.Stock = 10;
         pro.IdUsuario = 1;
 
-        productoHandler.GetProductoXUsuario(pro.Id);
+       productoHandler.GetProductoXUsuario(pro.Id);
+       productoHandler.GetProductoVendidoXUsuario(pro.Id);
+
 
         VentasHandler ventasHandler = new VentasHandler();
 
@@ -38,7 +40,7 @@ public class Probar
         v.Id = 1;
         v.Comentarios = "";
 
-        ventasHandler.GetVentasXId(v.Id);
+        ventasHandler.GetVentasXId(pro.Id);
 
     }
 }

@@ -52,7 +52,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                     {
                         sqlCommand.Connection = sqlConnection;
                         sqlCommand.Connection.Open();
-                        sqlCommand.CommandText = "SELECT * FROM Venta WHERE Id = @Id";
+                        sqlCommand.CommandText = "  SELECT v.Id, v.Comentarios FROM Venta v INNER JOIN ProductoVendido pv ON v.Id = pv.IdVenta INNER JOIN Producto p ON pv.IdProducto = p.Id WHERE p.IdUsuario = @Id";
                         sqlCommand.Parameters.AddWithValue("@Id", id);
 
                         SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -65,7 +65,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                         {
                             Venta venta = new Venta();
                             venta.Id = Convert.ToInt32(row["Id"]);
-                            venta.Comentarios = row["NombreUsuario"].ToString();
+                            venta.Comentarios = row["Comentarios"].ToString();
                             resultado.Add(venta);
 
                         }
