@@ -46,9 +46,9 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
             return usuarios;
         }
 
-        public Usuario GetUsuariosPorNombre (string nombre)
+        public Usuario GetUsuariosPorNombre (string nombreUsuario)
         {
-            List<Usuario> resultado = new List<Usuario>();
+            Usuario usuarios = new Usuario();
             try
             {
                 using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
@@ -57,8 +57,8 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                     {
                         sqlCommand.Connection = sqlConnection;
                         sqlCommand.Connection.Open();
-                        sqlCommand.CommandText = "SELECT * FROM Usuario WHERE Nombre = @Nombre";
-                        sqlCommand.Parameters.AddWithValue("@Nombre", nombre);
+                        sqlCommand.CommandText = "SELECT * FROM Usuario WHERE NombreUsuario = @NombreUsuario";
+                        sqlCommand.Parameters.AddWithValue("@NombreUsuario", nombreUsuario);
 
                         SqlDataAdapter dataAdapter = new SqlDataAdapter();
                         dataAdapter.SelectCommand = sqlCommand;
@@ -68,13 +68,13 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
 
                         foreach (DataRow row in table.Rows)
                         {
-                            Usuario usuarios = new Usuario();
+                            
                             usuarios.Id = Convert.ToInt32(row["Id"]);
                             usuarios.Nombre = row["Nombre"]?.ToString();
                             usuarios.Apellido = row["Apellido"]?.ToString();
                             usuarios.Contraseña = row["Contraseña"]?.ToString();
                             usuarios.Mail = row["Mail"]?.ToString();
-                            resultado.Add(usuarios);
+                           
 
                         }
                     }
@@ -85,11 +85,12 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
             {
                 Console.WriteLine(ex.Message);
             }
-            return resultado?.FirstOrDefault();
+            return usuarios;
         }
 
         public Usuario InicioSesion(string nombreUsuario, string contraseña)
         {
+            Usuario usuarios = new Usuario();
             List<Usuario> resultado = new List<Usuario>();
             try
             {
@@ -109,13 +110,14 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                         dataAdapter.Fill(table); //Se ejecuta el Select
                         sqlCommand.Connection.Close();
 
-                        Usuario usuarios = new Usuario();
+                        
                         foreach (DataRow row in table.Rows)
                         {
                             
                             usuarios.Id = Convert.ToInt32(row["Id"]);
                             usuarios.Nombre = row["Nombre"]?.ToString();
                             usuarios.Apellido = row["Apellido"]?.ToString();
+                            usuarios.NombreUsuario = row["NombreUsuario"]?.ToString();
                             usuarios.Contraseña = row["Contraseña"]?.ToString();
                             usuarios.Mail = row["Mail"]?.ToString();
                             resultado.Add(usuarios);
@@ -128,9 +130,10 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                             usuarios.Id = 0;
                             usuarios.Nombre = "";
                             usuarios.Apellido = "";
+                            usuarios.NombreUsuario = "";
                             usuarios.Contraseña = "";
                             usuarios.Mail = "";
-                            resultado.Add(usuarios);
+                            
                         }
                     }
                 }
@@ -141,7 +144,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                 Console.WriteLine(ex.Message);
             }
             
-            return resultado?.FirstOrDefault();
+            return usuarios;
         }
     }
 }

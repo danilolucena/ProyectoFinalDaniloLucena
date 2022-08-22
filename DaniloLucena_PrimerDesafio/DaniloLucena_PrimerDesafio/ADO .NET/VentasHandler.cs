@@ -41,7 +41,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
             return ventas;
         }
 
-        public Venta GetVentasXId(int id)
+        public List<Venta> GetVentasXId(int id)
         {
             List<Venta> resultado = new List<Venta>();
             try
@@ -77,7 +77,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
             {
                 Console.WriteLine(ex.Message);
             }
-            return resultado?.FirstOrDefault();
+            return resultado;
         }
     }
 }

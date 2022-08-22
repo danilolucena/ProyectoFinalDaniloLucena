@@ -45,7 +45,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
             return productos;
         }
 
-        public Producto GetProductoXUsuario(int id)
+        public List<Producto> GetProductoXUsuario(int id)
         {
             List<Producto> resultado = new List<Producto>();
             try
@@ -85,11 +85,11 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
             {
                 Console.WriteLine(ex.Message);
             }
-            return resultado?.FirstOrDefault();
+            return resultado;
         }
-        public Producto GetProductoVendidoXUsuario(int id)
+        public List<ProductoVendido> GetProductoVendidoXUsuario(int id)
         {
-            List<Producto> resultadoDescripciones = new List<Producto>();
+            List<ProductoVendido> resuladoPV = new List<ProductoVendido>();
             try
             {
                 using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
@@ -98,7 +98,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
                     {
                         sqlCommand.Connection = sqlConnection;
                         sqlCommand.Connection.Open();
-                        sqlCommand.CommandText = "SELECT DISTINCT p.Descripciones FROM Producto p INNER JOIN ProductoVendido pv ON p.Id = pv.IdProducto INNER JOIN Usuario u ON p.IdUsuario = u.Id  WHERE u.Id = @Id";
+                        sqlCommand.CommandText = "SELECT pv.Stock, pv.IdProducto, pv.IdVenta FROM Producto p INNER JOIN ProductoVendido pv ON p.Id = pv.IdProducto INNER JOIN Usuario u ON p.IdUsuario = u.Id  WHERE u.Id = @Id";
                         sqlCommand.Parameters.AddWithValue("@Id", id);
 
                         SqlDataAdapter dataAdapter = new SqlDataAdapter();
@@ -109,10 +109,12 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
 
                         foreach (DataRow row in table.Rows)
                         {
-                            Producto producto1 = new Producto();
-                          
-                            producto1.Descripcion = row["Descripciones"].ToString();
-                            resultadoDescripciones.Add(producto1);
+                            ProductoVendido productoVendido = new ProductoVendido();
+
+                            productoVendido.Stock = Convert.ToInt32(row["Stock"]);
+                            productoVendido.IdProducto = Convert.ToInt32(row["IdProducto"]);
+                            productoVendido.IdVenta = Convert.ToInt32(row["IdVenta"]);
+                            resuladoPV.Add(productoVendido);
 
                         }
                     }
@@ -123,7 +125,7 @@ namespace DaniloLucena_PrimerDesafio.ADO_.NET
             {
                 Console.WriteLine(ex.Message);
             }
-            return resultadoDescripciones?.FirstOrDefault();
+            return resuladoPV;
         }
     }
 }
