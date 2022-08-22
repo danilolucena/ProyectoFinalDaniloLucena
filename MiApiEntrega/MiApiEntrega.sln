@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiApiEntrega", "MiApiEntrega\MiApiEntrega.csproj", "{1D2F8FD8-6193-4416-B225-2D64061A8CCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D2F8FD8-6193-4416-B225-2D64061A8CCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D2F8FD8-6193-4416-B225-2D64061A8CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D2F8FD8-6193-4416-B225-2D64061A8CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D2F8FD8-6193-4416-B225-2D64061A8CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADF03D7A-783B-4718-978A-52213DEE3366}
+	EndGlobalSection
+EndGlobal
