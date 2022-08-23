@@ -58,13 +58,13 @@ namespace MiApiEntrega.Controllers
                 return false;
             }
         }
-        [HttpGet]
+        [HttpGet("/GetUsuariosPorNombre")]
         public Usuario GetUsuariosPorNombre([FromBody] string nombreUsuario)
         {
             return UsuarioHandler.GetUsuariosPorNombre(nombreUsuario);
         }
 
-        [HttpGet]
+        [HttpGet("/InicioSesion")]
         public Usuario InicioSesion([FromBody] string nombre, string contraseña)
         {
             return UsuarioHandler.InicioSesion(nombre,contraseña);

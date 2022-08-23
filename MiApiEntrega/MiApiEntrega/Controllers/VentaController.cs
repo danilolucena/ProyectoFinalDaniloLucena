@@ -55,20 +55,14 @@ namespace MiApiEntrega.Controllers
             });
         }
 
-        //[HttpGet]
+        [HttpGet("/GetVentasXId")]
 
-        //public List<Venta> GetVentasXId([FromBody] int id)
-        //{
-        //    try
-        //    {
-        //        return VentaHandler.GetVentasXId(id);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //        return VentaHandler.GetVentasXId(id);
-        //    }
-        //}
+        public List<Venta> GetVentasXId([FromBody] int id)
+        {
+            
+                return VentaHandler.GetVentasXId(id);
+          
+        }
 
     }
 }

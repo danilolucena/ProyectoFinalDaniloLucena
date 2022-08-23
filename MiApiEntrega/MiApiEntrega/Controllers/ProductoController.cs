@@ -64,10 +64,10 @@ namespace MiApiEntrega.Controllers
             }
         }
 
-        //[HttpGet]
-        //public List<Producto> GetProductosXId([FromBody] int id)
-        //{
-        //    return ProductoHandler.GetProductoXUsuario(id);
-        //}
+        [HttpGet("/GetProductosXId")]
+        public List<Producto> GetProductosXId([FromBody] int id)
+        {
+            return ProductoHandler.GetProductoXUsuario(id);
+        }
     }
 }

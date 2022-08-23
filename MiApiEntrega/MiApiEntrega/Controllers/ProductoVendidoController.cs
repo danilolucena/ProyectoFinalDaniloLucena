@@ -60,11 +60,11 @@ namespace MiApiEntrega.Controllers
                 Id = productoVendido.Id
             }) ;
         }
-        //[HttpGet]
-        //public List<ProductoVendido> GetProductoVendidoXUsuario([FromBody] int id)
-        //{
-         
-        //  return ProductoVendidoHandler.GetProductoVendidoXUsuario(id);
-        //}
+        [HttpGet("/GetProductoVendidoXUsuario")]
+        public List<ProductoVendido> GetProductoVendidoXUsuario([FromBody] int id)
+        {
+
+            return ProductoVendidoHandler.GetProductoVendidoXUsuario(id);
+        }
     }
 }

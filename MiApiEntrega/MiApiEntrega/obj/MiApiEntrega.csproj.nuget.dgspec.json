@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CoderHouse\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj": {}
+    "C:\\CoderHouse\\ProyectoFinalDaniloLucena\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj": {}
   },
   "projects": {
-    "C:\\CoderHouse\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj": {
+    "C:\\CoderHouse\\ProyectoFinalDaniloLucena\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CoderHouse\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj",
+        "projectUniqueName": "C:\\CoderHouse\\ProyectoFinalDaniloLucena\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj",
         "projectName": "MiApiEntrega",
-        "projectPath": "C:\\CoderHouse\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj",
+        "projectPath": "C:\\CoderHouse\\ProyectoFinalDaniloLucena\\MiApiEntrega\\MiApiEntrega\\MiApiEntrega.csproj",
         "packagesPath": "C:\\Users\\danil\\.nuget\\packages\\",
-        "outputPath": "C:\\CoderHouse\\MiApiEntrega\\MiApiEntrega\\obj\\",
+        "outputPath": "C:\\CoderHouse\\ProyectoFinalDaniloLucena\\MiApiEntrega\\MiApiEntrega\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
