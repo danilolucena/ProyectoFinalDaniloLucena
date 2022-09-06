@@ -74,7 +74,7 @@ namespace MiApiEntrega.Repository
             using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 string queryInsert = "INSERT INTO ProductoVendido " +
-                    "(Stock, Costo, IdProducto, IdVenta) VALUES " +
+                    "(Stock, IdProducto, IdVenta) VALUES " +
                     "(@StockParamenter, @IdProductoParameter, @IdVentaParamenter);";
 
                 SqlParameter StockParamenter = new SqlParameter("StockParamenter", SqlDbType.BigInt) { Value = productoVendido.Stock };
