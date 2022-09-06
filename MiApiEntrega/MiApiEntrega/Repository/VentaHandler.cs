@@ -64,12 +64,15 @@ namespace MiApiEntrega.Repository
 
             return resultado;
         }
-        public static bool CrearVenta(Venta venta)
+        public static bool CrearVenta(List<Producto> producto, int id)
         {
             bool resultado = false;
+            Venta venta = new Venta();
+            if (producto != null)
+            {
             using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
-                string queryInsert = "INSERT INTO Venta " +
+                string queryInsertVenta = "INSERT INTO Venta " +
                     "(Comentarios) VALUES " +
                     "(@ComentariosParamenter);";
 
@@ -78,7 +81,7 @@ namespace MiApiEntrega.Repository
 
                 sqlConnection.Open();
 
-                using (SqlCommand sqlCommand = new SqlCommand(queryInsert, sqlConnection))
+                using (SqlCommand sqlCommand = new SqlCommand(queryInsertVenta, sqlConnection))
                 {
                     sqlCommand.Parameters.Add(ComentariosParamenter);
                    
@@ -89,8 +92,17 @@ namespace MiApiEntrega.Repository
                         resultado = true;
                     }
                 }
+                    string queryInsertProductoVendido = "INSERT INTO ProductoVendido " +
+                        "(Stock, Costo, IdProducto, IdVenta) VALUES " +
+                        "(@StockParamenter, @IdProductoParameter, @IdVentaParamenter);";
 
-                sqlConnection.Close();
+                    foreach (Producto i in producto)
+                    {
+
+                    }
+                    sqlConnection.Close();
+
+            }
             }
 
             return resultado;

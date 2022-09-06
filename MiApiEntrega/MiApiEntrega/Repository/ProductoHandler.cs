@@ -112,7 +112,7 @@ namespace MiApiEntrega.Repository
             using (SqlConnection sqlConnection = new SqlConnection(ConnectionString))
             {
                 string queryInsert = "UPDATE Producto " +
-                    "SET Descripciones = @descripciones, Costo = @costo, PrecioVenta = @precioVenta, Stock = @stock, IdUsuario = @idUsuario" +
+                    "SET Descripciones = @DescripcionesParameter, Costo = @CostoParameter, PrecioVenta = @PrecioVentaParameter, Stock = @StockParameter, IdUsuario = @IdUsuarioParameter" +
                     "WHERE Id = @id ";
 
                 SqlParameter DescripcionesParameter = new SqlParameter("DescripcionesParameter", SqlDbType.VarChar) { Value = producto.Descripciones };
